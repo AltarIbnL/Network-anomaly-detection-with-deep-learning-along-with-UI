@@ -1,0 +1,14 @@
+<RCC>
+  <qresource prefix="icon">
+    <file>resources/停止.png</file>
+    <file>resources/执行.png</file>
+    <file>resources/exit.png</file>
+    <file>resources/min.png</file>
+    <file>resources/restore.png</file>
+    <file>resources/short.png</file>
+    <file>resources/识别图标.png</file>
+    <file>resources/camera.png</file>
+    <file>resources/label_pic.png</file>
+    <file>resources/风车.png</file>
+  </qresource>
+</RCC>
