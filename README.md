@@ -1,3 +1,10 @@
+### Network-anomaly-detection-with-deep-learning-along-with-UI
+
+```
+关于我项目的简要介绍可以看一下我的博客：
+https://blog.csdn.net/weixin_39032619/article/details/120337693
+```
+
 项目基于pytorch，PyQt
 
 在运行项目前，请先安装winpcap以对网络流量进行嗅探。
@@ -30,3 +37,9 @@ NetData 中，我们将网络流量包切成多个数据流并保存在txt文件
 这里只包含了模型结构还有训练好的模型，训练过程的代码还有数据集我之后再上传到github。
 
 虽然代码写的稀烂，不过请大家不要吝啬自己的star，算是给我写代码的认可。
+
+
+
+项目运行结果：
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/c7358132a5d24132a6a00073700cb9e2.gif#pic_center#pic_center)
