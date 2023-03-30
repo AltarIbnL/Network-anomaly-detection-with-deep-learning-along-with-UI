@@ -1,5 +1,9 @@
 ### Network-anomaly-detection-with-deep-learning-along-with-UI
 
+2023年3/30 更新
+
+更改了net.py 中 在view或reshape时，输入的模型形状，不再设置为一个定值64，而是用out.size(0)代替
+
 ```
 关于我项目的简要介绍可以看一下我的博客：
 https://blog.csdn.net/weixin_39032619/article/details/120337693

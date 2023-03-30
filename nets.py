@@ -6,8 +6,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 torch.nn.SmoothL1Loss
-
-
+####-------------------------------------------事先定义
+# # 三级平行模型（模型）
 class TPCNN(nn.Module):
 	def __init__(self, num_class=10, head_payload=False):
 		super(TPCNN, self).__init__()
@@ -139,7 +139,7 @@ class TPCNN(nn.Module):
 
 		return out
 
-
+# 三级平行时序模型
 class TPCNN_C(nn.Module):
 	def __init__(self, num_class=10, head_payload=False):
 		super(TPCNN_C, self).__init__()
@@ -224,9 +224,6 @@ class TPCNN_C(nn.Module):
 		dout = self.dconv1(x)
 
 		# 连接
-		# print("uout", uout.shape)
-		# print("mout", mout.shape)
-		# print("dout", dout.shape)
 		out = torch.cat((uout, mout, dout), dim=1)
 		# print("out", out.shape)
 
@@ -235,7 +232,8 @@ class TPCNN_C(nn.Module):
 
 		# 中
 		# print(out.shape)
-		m=out.view(64,-1,48)
+		# m=out.view(64,-1,48)
+		m = out.view(out.size(0), -1, 48)
 		mout,_= self.mlstm(m)
 		# print("mout", mout.shape)
 
@@ -261,10 +259,9 @@ class TPCNN_C(nn.Module):
 		# 连接
 		#
 
-		mout=torch.reshape(mout,[64,-1,2,2])
-		# print("mout",mout.shape)
-		dout=torch.reshape(dout,[64,-1,2,2])
-		uout=torch.reshape(uout,[64,-1,2,2])
+		mout = torch.reshape(mout, [mout.size(0), -1, 2, 2])
+		dout = torch.reshape(dout, [mout.size(0), -1, 2, 2])
+		uout = torch.reshape(uout, [mout.size(0), -1, 2, 2])
 		out = torch.cat((uout, mout, dout,), dim=1)
 
 		# 最后的网络
@@ -274,8 +271,8 @@ class TPCNN_C(nn.Module):
 		out = self.avpool(out)
 
 		# 全连接层
-		# print("out", out.shape)
 		out=out.view(-1,912*2*2)
+		# out = out.view(-1, 1024 * 2 * 2)
 		out = self.fc1(out)
 		out = self.fc2(out)
 		# print("out", out.shape)
@@ -283,7 +280,7 @@ class TPCNN_C(nn.Module):
 		return out
 
 
-
+#夏本辉师兄模型
 class Pccn(nn.Module):
 	def __init__(self, num_class=12,head_payload=False):
 		super(Pccn, self).__init__()
